@@ -1,11 +1,11 @@
 import { Text, View } from "react-native";
 
-const TabScreen = () => {
+const Page = () => {
   return (
     <View>
-      <Text>Orders Page</Text>
+      <Text>Account Page</Text>
     </View>
   );
 };
 
-export default TabScreen;
+export default Page;
