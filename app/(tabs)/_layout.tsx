@@ -1,59 +1,145 @@
-import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import React from "react";
+import { View, StyleSheet, useColorScheme } from "react-native";
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { CommonActions } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  Text,
+  BottomNavigation,
+  MD3DarkTheme,
+  MD3LightTheme,
+} from "react-native-paper";
+import HomeScreen from ".";
+import {
+  FontAwesome,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
+import SearchScreen from "./search";
+import AccountScreen from "./account";
+import AppBar from "@/components/AppBar";
+import TopNavbar from "@/components/AppBar";
+import Colors from "@/constants/Colors";
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+const Tab = createBottomTabNavigator();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function Layout() {
+  const theme = useColorScheme();
   return (
-    <Tabs
+    <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
-      <Tabs.Screen
-        name="index"
+        headerShown: true,
+        headerLeftContainerStyle: { paddingHorizontal: 20 },
+        headerRightContainerStyle: { paddingHorizontal: 20 },
+        headerStyle: {
+          backgroundColor:
+            theme === "dark"
+              ? MD3DarkTheme.colors.background
+              : MD3LightTheme.colors.background,
+        },
+        headerLeft: () => <Text variant="titleLarge">Conva</Text>,
+        headerTitle: "",
+      }}
+      tabBar={({ navigation, state, descriptors, insets }) => (
+        <BottomNavigation.Bar
+          navigationState={state}
+          safeAreaInsets={insets}
+          style={{
+            backgroundColor:
+              theme === "dark"
+                ? MD3DarkTheme.colors.background
+                : MD3LightTheme.colors.background,
+          }}
+          onTabPress={({ route, preventDefault }) => {
+            const event = navigation.emit({
+              type: "tabPress",
+              target: route.key,
+              canPreventDefault: true,
+            });
+
+            if (event.defaultPrevented) {
+              preventDefault();
+            } else {
+              navigation.dispatch({
+                ...CommonActions.navigate(route.name, route.params),
+                target: state.key,
+              });
+            }
+          }}
+          renderIcon={({ route, focused, color }) => {
+            const { options } = descriptors[route.key];
+            if (options.tabBarIcon) {
+              return options.tabBarIcon({ focused, color, size: 24 });
+            }
+
+            return null;
+          }}
+          getLabelText={({ route }) => {
+            const { options } = descriptors[route.key];
+            const label = route.name;
+            return label;
+          }}
+        />
+      )}
+    >
+      <Tab.Screen
+        name="Orders"
+        component={HomeScreen}
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          tabBarLabel: "Home",
+          tabBarIcon: ({ color, size }) => {
+            return (
+              <MaterialCommunityIcons
+                name="receipt"
+                size={size}
+                color={color}
+              />
+            );
+          },
         }}
       />
-      <Tabs.Screen
-        name="two"
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarLabel: "Search",
+          tabBarIcon: ({ color, size }) => {
+            return <MaterialIcons name="search" size={size} color={color} />;
+          },
         }}
       />
-    </Tabs>
+      <Tab.Screen
+        name="Items"
+        component={AccountScreen}
+        options={{
+          tabBarLabel: "Items",
+          tabBarIcon: ({ color, size }) => {
+            return (
+              <MaterialCommunityIcons
+                name="truck-delivery"
+                size={size}
+                color={color}
+              />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          tabBarLabel: "Account",
+          tabBarIcon: ({ color, size }) => {
+            return (
+              <MaterialCommunityIcons
+                name="account"
+                size={size}
+                color={color}
+              />
+            );
+          },
+        }}
+      />
+    </Tab.Navigator>
   );
 }
