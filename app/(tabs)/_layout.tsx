@@ -20,6 +20,7 @@ import AccountScreen from "./account";
 import AppBar from "@/components/AppBar";
 import TopNavbar from "@/components/AppBar";
 import Colors from "@/constants/Colors";
+import ItemsScreen from "./items";
 
 const Tab = createBottomTabNavigator();
 
@@ -134,8 +135,8 @@ export default function Layout() {
         }}
       />
       <Tab.Screen
-        name="Items"
-        component={AccountScreen}
+        name="items"
+        component={ItemsScreen}
         options={{
           tabBarLabel: "Items",
           tabBarIcon: ({ color, size }) => {

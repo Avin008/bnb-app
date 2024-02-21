@@ -5,7 +5,7 @@ import { ScrollView, View } from "react-native";
 const HomeScreen = () => {
   return (
     <View style={{ flex: 1, paddingVertical: 5 }}>
-      <CreateOrderButton />
+      <CreateOrderButton label="New Order" />
       <ScrollView>
         <OrderList heading="Today's Orders" />
       </ScrollView>

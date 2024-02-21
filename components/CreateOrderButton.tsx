@@ -2,10 +2,16 @@ import * as React from "react";
 import { StyleSheet } from "react-native";
 import { FAB } from "react-native-paper";
 
-const CreateOrderButton = () => (
+const CreateOrderButton = ({
+  label,
+  icon,
+}: {
+  label: string;
+  icon?: string;
+}) => (
   <FAB
-    icon="plus"
-    label="New Order"
+    icon={icon || "plus"}
+    label={label}
     style={styles.fab}
     onPress={() => console.log("Pressed")}
   />
