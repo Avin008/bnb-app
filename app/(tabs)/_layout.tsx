@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, useColorScheme } from "react-native";
+import { View, StyleSheet, useColorScheme, Image } from "react-native";
 
 import { CommonActions } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -37,7 +37,32 @@ export default function Layout() {
               ? MD3DarkTheme.colors.background
               : MD3LightTheme.colors.background,
         },
-        headerLeft: () => <Text variant="titleLarge">Conva</Text>,
+        headerLeft: () => (
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 5,
+            }}
+          >
+            <Image
+              source={{
+                uri: "https://cdn3.iconfinder.com/data/icons/feather-5/24/codesandbox-512.png",
+              }}
+              width={30}
+              height={30}
+            />
+            <Text
+              variant="titleMedium"
+              style={{
+                fontWeight: "700",
+              }}
+            >
+              RentSpace
+            </Text>
+          </View>
+        ),
         headerTitle: "",
       }}
       tabBar={({ navigation, state, descriptors, insets }) => (
