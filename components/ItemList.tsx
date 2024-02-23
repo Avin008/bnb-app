@@ -18,7 +18,7 @@ const ItemList = () => {
   ];
   return (
     <ScrollView>
-      <List.Section>
+      <List.Section style={{ paddingBottom: 80 }}>
         <List.Subheader>Your Items</List.Subheader>
         {dummyData?.map((x, i) => (
           <ListItemComp x={x} key={i} />
