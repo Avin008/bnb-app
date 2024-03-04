@@ -1,3 +1,4 @@
+import CreateNewOrderButton from "@/components/CreateNewOrderBtn";
 import CreateOrderButton from "@/components/CreateOrderButton";
 import ListItem from "@/components/ListItem";
 import { ordersData } from "@/data";
@@ -7,7 +8,7 @@ import { List } from "react-native-paper";
 const HomeScreen = () => {
   return (
     <View style={{ flex: 1 }}>
-      <CreateOrderButton label="New Order" />
+      <CreateNewOrderButton />
       <FlatList
         data={ordersData}
         renderItem={(item) => (
