@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, useColorScheme, Image } from "react-native";
+import { View, useColorScheme, Image } from "react-native";
 
 import { CommonActions } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -10,16 +10,9 @@ import {
   MD3LightTheme,
 } from "react-native-paper";
 import HomeScreen from ".";
-import {
-  FontAwesome,
-  MaterialCommunityIcons,
-  MaterialIcons,
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import SearchScreen from "./search";
 import AccountScreen from "./account";
-import AppBar from "@/components/AppBar";
-import TopNavbar from "@/components/AppBar";
-import Colors from "@/constants/Colors";
 import ItemsScreen from "./items";
 
 const Tab = createBottomTabNavigator();
