@@ -17,7 +17,9 @@ const HomeScreen = () => {
             key={item.index}
           />
         )}
-        ListHeaderComponent={() => <List.Subheader>Your Items</List.Subheader>}
+        ListHeaderComponent={() => (
+          <List.Subheader>Today's Orders</List.Subheader>
+        )}
       />
     </View>
   );
