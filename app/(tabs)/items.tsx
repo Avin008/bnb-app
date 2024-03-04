@@ -24,7 +24,7 @@ const ItemsScreen = () => {
       <FlatList
         data={dummyData}
         renderItem={(data) => <ItemCard itemCardData={data.item} />}
-        contentContainerStyle={{ padding: 5, gap: 10 }}
+        contentContainerStyle={{ padding: 10, gap: 12 }}
         ListHeaderComponent={() => (
           <List.Subheader variant="headlineSmall">Your Items</List.Subheader>
         )}
