@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Pressable, View, useColorScheme } from "react-native";
 import { List, MD3DarkTheme, MD3LightTheme } from "react-native-paper";
 
-const ListItem = ({ name, icon }: { name: string; icon: string }) => {
+const ListItem = ({ name }: { name: string }) => {
   const theme = useColorScheme();
   return (
     <Pressable

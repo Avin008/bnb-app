@@ -1,7 +1,7 @@
 import ListItem from "@/components/ListItem";
-import { dummyData } from "@/components/OrderList";
 import SearchBar from "@/components/screens/SearchBar";
-import { FlatList, ScrollView, Text, View } from "react-native";
+import { ordersData } from "@/data";
+import { FlatList, View } from "react-native";
 import { List } from "react-native-paper";
 
 const SearchScreen = () => {
@@ -9,10 +9,8 @@ const SearchScreen = () => {
     <View style={{ flex: 1 }}>
       <SearchBar />
       <FlatList
-        data={dummyData}
-        renderItem={(data) => (
-          <ListItem name={data.item.name} icon={data.item.icon} />
-        )}
+        data={ordersData}
+        renderItem={(data) => <ListItem name={data.item.name} />}
         ListHeaderComponent={() => (
           <List.Subheader>Search Results</List.Subheader>
         )}
