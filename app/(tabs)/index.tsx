@@ -1,5 +1,4 @@
-import CreateNewOrderButton from "@/components/CreateNewOrderBtn";
-import CreateOrderButton from "@/components/CreateOrderButton";
+import CreateNewOrderButton from "@/components/CreateNewOrderButton";
 import ListItem from "@/components/ListItem";
 import { ordersData } from "@/data";
 import { FlatList, View } from "react-native";
