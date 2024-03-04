@@ -6,7 +6,7 @@ import { List } from "react-native-paper";
 
 const HomeScreen = () => {
   return (
-    <View style={{ flex: 1, paddingVertical: 5 }}>
+    <View style={{ flex: 1 }}>
       <CreateOrderButton label="New Order" />
       <FlatList
         data={dummyData}
