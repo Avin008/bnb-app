@@ -1,5 +1,6 @@
+import Colors from "@/constants/Colors";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import { TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View, useColorScheme } from "react-native";
 import { Card, Text } from "react-native-paper";
 
 type ItemCardProps = {
@@ -11,6 +12,7 @@ type ItemCardProps = {
 };
 
 const ItemCard = ({ itemCardData }: { itemCardData: ItemCardProps }) => {
+  const theme = useColorScheme();
   return (
     <Card>
       <Card.Content
@@ -29,7 +31,11 @@ const ItemCard = ({ itemCardData }: { itemCardData: ItemCardProps }) => {
           </Text>
         </View>
         <View>
-          <MaterialIcons name="keyboard-arrow-right" size={25} />
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={25}
+            color={theme === "dark" ? Colors.dark.text : Colors.light.text}
+          />
         </View>
       </Card.Content>
     </Card>
