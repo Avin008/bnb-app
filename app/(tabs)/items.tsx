@@ -1,4 +1,4 @@
-import CreateOrderButton from "@/components/CreateOrderButton";
+import AddNewItemButton from "@/components/AddNewItemButton";
 import ItemCard from "@/components/ItemCard";
 import { itemsData } from "@/data";
 import { FlatList, View } from "react-native";
@@ -7,7 +7,7 @@ import { List } from "react-native-paper";
 const ItemsScreen = () => {
   return (
     <View style={{ flex: 1 }}>
-      <CreateOrderButton label="New Item" />
+      <AddNewItemButton />
       <FlatList
         data={itemsData}
         renderItem={(data) => <ItemCard itemCardData={data.item} />}
