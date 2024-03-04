@@ -3,17 +3,15 @@ import { List, MD3Colors } from "react-native-paper";
 import ListItem from "./ListItem";
 
 const dummyData = [
-  { name: "Goku Son", icon: "account-circle" },
-  { name: "Gohan Son", icon: "account-circle" },
-  { name: "Vegeta", icon: "account-circle" },
-  { name: "Trunks", icon: "account-circle" },
-  { name: "Goten", icon: "account-circle" },
-  { name: "Angel Whis", icon: "account-circle" },
-  { name: "Lord Beerus", icon: "account-circle" },
-  { name: "Bulma", icon: "account-circle" },
-  { name: "Naruto Uzumaki", icon: "account-circle" },
-  { name: "Light Yagami", icon: "account-circle" },
-  { name: "Iren Yager", icon: "account-circle" },
+  { name: "Raghav Chaitanya", icon: "account-circle" },
+  { name: "Mahesh Dalia", icon: "account-circle" },
+  { name: "Deepesh Joshi", icon: "account-circle" },
+  { name: "Anand Mehra", icon: "account-circle" },
+  { name: "Jogesh Khan", icon: "account-circle" },
+  { name: "Mousumi Mishra", icon: "account-circle" },
+  { name: "Neha Patel", icon: "account-circle" },
+  { name: "Rahesh Agrawal", icon: "account-circle" },
+  { name: "Ritesh Nag", icon: "account-circle" },
 ];
 
 const OrderList = ({ heading }: { heading?: string }) => {

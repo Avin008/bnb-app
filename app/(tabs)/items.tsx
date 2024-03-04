@@ -4,8 +4,8 @@ import ItemCard from "@/components/ItemCard";
 import ItemList from "@/components/ItemList";
 import SearchBar from "@/components/screens/SearchBar";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Image, ScrollView, View } from "react-native";
-import { Button, Card, Text } from "react-native-paper";
+import { FlatList, Image, ScrollView, View } from "react-native";
+import { Button, Card, Divider, List, Text } from "react-native-paper";
 
 const ItemsScreen = () => {
   const dummyData: any = [
@@ -21,14 +21,14 @@ const ItemsScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <CreateOrderButton label="New Item" />
-      <SearchBar />
-      <ScrollView>
-        <View style={{ padding: 10, display: "flex", gap: 10 }}>
-          {dummyData?.map((data: any) => (
-            <ItemCard key={data.id} itemCardData={data} />
-          ))}
-        </View>
-      </ScrollView>
+      <FlatList
+        data={dummyData}
+        renderItem={(data) => <ItemCard itemCardData={data.item} />}
+        contentContainerStyle={{ padding: 5, gap: 10 }}
+        ListHeaderComponent={() => (
+          <List.Subheader variant="headlineSmall">Your Items</List.Subheader>
+        )}
+      />
     </View>
   );
 };
