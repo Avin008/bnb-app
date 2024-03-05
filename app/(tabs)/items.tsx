@@ -1,5 +1,6 @@
 import AddNewItemButton from "@/components/AddNewItemButton";
 import ItemCard from "@/components/ItemCard";
+import SearchBar from "@/components/screens/SearchBar";
 import { itemsData } from "@/data";
 import { FlatList, View } from "react-native";
 import { List } from "react-native-paper";
@@ -7,6 +8,7 @@ import { List } from "react-native-paper";
 const ItemsScreen = () => {
   return (
     <View style={{ flex: 1 }}>
+      <SearchBar label="Search Items" />
       <AddNewItemButton />
       <FlatList
         data={itemsData}

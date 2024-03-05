@@ -7,7 +7,7 @@ import { List } from "react-native-paper";
 const SearchScreen = () => {
   return (
     <View style={{ flex: 1 }}>
-      <SearchBar />
+      <SearchBar label="Search Orders" />
       <FlatList
         data={ordersData}
         renderItem={(data) => <ListItem name={data.item.name} />}
