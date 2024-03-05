@@ -16,6 +16,7 @@ const HomeScreen = () => {
         ListHeaderComponent={() => (
           <List.Subheader>Today's Orders</List.Subheader>
         )}
+        ListFooterComponent={() => <View style={{ height: 100 }}></View>}
       />
     </View>
   );

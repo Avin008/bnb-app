@@ -15,6 +15,7 @@ const ItemsScreen = () => {
         ListHeaderComponent={() => (
           <List.Subheader variant="headlineSmall">Your Items</List.Subheader>
         )}
+        ListFooterComponent={() => <View style={{ height: 100 }}></View>}
       />
     </View>
   );
