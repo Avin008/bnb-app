@@ -1,10 +1,18 @@
 import CreateNewOrderButton from "@/components/CreateNewOrderButton";
 import ListItem from "@/components/ListItem";
-import { ordersData } from "@/data";
+import { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
-import { List } from "react-native-paper";
+import { List, Text } from "react-native-paper";
 
 const HomeScreen = () => {
+  const [ordersData, setOrderData] = useState<any>([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => (res.ok ? res.json() : res.json()))
+      .then((data) => setOrderData(data))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <View style={{ flex: 1 }}>
       <CreateNewOrderButton />
