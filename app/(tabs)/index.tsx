@@ -2,7 +2,7 @@ import CreateNewOrderButton from "@/components/CreateNewOrderButton";
 import ListItem from "@/components/ListItem";
 import { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
-import { List, Text } from "react-native-paper";
+import { Divider, List, Text } from "react-native-paper";
 
 const HomeScreen = () => {
   const [ordersData, setOrderData] = useState<any>([]);
@@ -25,6 +25,7 @@ const HomeScreen = () => {
           <List.Subheader>Today's Orders</List.Subheader>
         )}
         ListFooterComponent={() => <View style={{ height: 100 }}></View>}
+        // ItemSeparatorComponent={() => <Divider />}
       />
     </View>
   );

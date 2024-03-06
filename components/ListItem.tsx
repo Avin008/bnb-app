@@ -1,7 +1,21 @@
+import Colors from "@/constants/Colors";
 import convertDateToTime from "@/utility/convertDateToTime";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Pressable, View, useColorScheme } from "react-native";
-import { List, MD3DarkTheme, MD3LightTheme, Text } from "react-native-paper";
+import {
+  Pressable,
+  Touchable,
+  TouchableOpacity,
+  View,
+  useColorScheme,
+} from "react-native";
+import {
+  Button,
+  Chip,
+  List,
+  MD3DarkTheme,
+  MD3LightTheme,
+  Text,
+} from "react-native-paper";
 
 const ListItem = ({ name }: { name: string }) => {
   const theme = useColorScheme();
@@ -20,10 +34,15 @@ const ListItem = ({ name }: { name: string }) => {
         title={name}
         descriptionNumberOfLines={2}
         description={() => (
-          <View>
-            <Text variant="bodyLarge">
+          <View style={{ display: "flex", gap: 5 }}>
+            <Text variant="bodySmall">
               Delivery {convertDateToTime(new Date())}
             </Text>
+            <Chip>
+              {Math.floor(Math.random() * 10) > 5
+                ? " Ready for Pickup"
+                : "Delivered"}
+            </Chip>
           </View>
         )}
         left={({ color, style }) => (
