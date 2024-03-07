@@ -1,10 +1,10 @@
 import Colors from "@/constants/Colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableOpacity, View } from "react-native";
+import { View, useColorScheme } from "react-native";
 import PagerView from "react-native-pager-view";
-import { Text } from "react-native-paper";
+import { Text, useTheme } from "react-native-paper";
 
 const FilterByDate = () => {
+  const theme = useColorScheme();
   return (
     <View style={{ height: 80 }}>
       <PagerView style={{ flex: 1 }} initialPage={0}>
@@ -28,24 +28,20 @@ const FilterByDate = () => {
             { day: "SAT", dayNum: 7 },
           ].map((x, i) => (
             <View
+              key={i}
               style={{
                 display: "flex",
                 borderRadius: 5,
                 width: 50,
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: i === 1 ? "#6eebf2" : "black",
+                borderWidth: 0.4,
+                backgroundColor:
+                  theme === "light" ? Colors.dark.tint : Colors.light.tint,
               }}
             >
-              <Text style={{ color: i === 1 ? "black" : "white" }}>
-                {x.day}
-              </Text>
-              <Text
-                style={{ color: i === 1 ? "black" : "white" }}
-                variant="bodyLarge"
-              >
-                {x.dayNum}
-              </Text>
+              <Text>{x.day}</Text>
+              <Text variant="bodyLarge">{x.dayNum}</Text>
             </View>
           ))}
         </View>
