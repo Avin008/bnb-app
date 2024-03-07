@@ -1,4 +1,5 @@
 import CreateNewOrderButton from "@/components/CreateNewOrderButton";
+import FilterByDate from "@/components/FilterByDateCalander";
 import ListItem from "@/components/ListItem";
 import { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
@@ -16,6 +17,7 @@ const HomeScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <CreateNewOrderButton />
+      <FilterByDate />
       <FlatList
         data={ordersData}
         renderItem={(item) => (
