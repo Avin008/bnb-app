@@ -1,19 +1,19 @@
 import Colors from "@/constants/Colors";
+import { eachDayOfInterval, format } from "date-fns";
+import { useState } from "react";
 import { Pressable, useColorScheme } from "react-native";
 import { Text } from "react-native-paper";
 
-type DatePickerPropsType = {
-  id: string;
-  dayOfTheWeek: string;
-  dateOfTheMonth: string;
-};
-
-const DatePicker = ({
-  datePickerData,
-}: {
-  datePickerData: DatePickerPropsType;
-}) => {
+const DatePicker = ({ date }: { date: Date }) => {
   const theme = useColorScheme();
+
+  const todaysDate = eachDayOfInterval({
+    start: Date.now(),
+    end: Date.now(),
+  })[0];
+
+  const [selectedDate, setSelectedDate] = useState(todaysDate);
+
   return (
     <Pressable
       android_ripple={{ color: "#8ac5ef" }}
@@ -25,11 +25,45 @@ const DatePicker = ({
         alignItems: "center",
         justifyContent: "center",
         borderWidth: 0.4,
-        backgroundColor: theme === "light" ? Colors.dark.tint : "black",
+        backgroundColor:
+          theme === "light"
+            ? selectedDate.toString() === date.toString()
+              ? Colors.light.tint
+              : Colors.dark.tint
+            : selectedDate.toString() === date.toString()
+            ? Colors.light.tint
+            : "black",
       }}
     >
-      <Text>{datePickerData.dayOfTheWeek}</Text>
-      <Text variant="bodyLarge">{datePickerData.dateOfTheMonth}</Text>
+      <Text
+        style={{
+          color:
+            theme === "dark"
+              ? selectedDate.toString() === date.toString()
+                ? "white"
+                : "white"
+              : selectedDate.toString() === date.toString()
+              ? "white"
+              : "black",
+        }}
+      >
+        {format(date, "eee").toUpperCase()}
+      </Text>
+      <Text
+        style={{
+          color:
+            theme === "dark"
+              ? selectedDate.toString() === date.toString()
+                ? "white"
+                : "white"
+              : selectedDate.toString() === date.toString()
+              ? "white"
+              : "black",
+        }}
+        variant="bodyLarge"
+      >
+        {format(date, "d")}
+      </Text>
     </Pressable>
   );
 };
