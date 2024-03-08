@@ -1,10 +1,8 @@
-import Colors from "@/constants/Colors";
-import { Pressable, View, useColorScheme } from "react-native";
+import { View } from "react-native";
 import PagerView from "react-native-pager-view";
-import { Text, useTheme } from "react-native-paper";
+import DatePicker from "./DatePicker";
 
 const FilterByDate = () => {
-  const theme = useColorScheme();
   return (
     <View style={{ height: 80 }}>
       <PagerView style={{ flex: 1 }} initialPage={0}>
@@ -19,69 +17,43 @@ const FilterByDate = () => {
           }}
         >
           {[
-            { day: "SUN", dayNum: 1 },
-            { day: "MON", dayNum: 2 },
-            { day: "TUE", dayNum: 3 },
-            { day: "WED", dayNum: 4 },
-            { day: "THU", dayNum: 5 },
-            { day: "FRI", dayNum: 6 },
-            { day: "SAT", dayNum: 7 },
-          ].map((x, i) => (
-            <Pressable
-              android_ripple={{ color: "#8ac5ef" }}
-              unstable_pressDelay={200}
-              key={i}
-              style={{
-                display: "flex",
-                borderRadius: 5,
-                width: 50,
-                alignItems: "center",
-                justifyContent: "center",
-                borderWidth: 0.4,
-                backgroundColor: theme === "light" ? Colors.dark.tint : "black",
-              }}
-            >
-              <Text>{x.day}</Text>
-              <Text variant="bodyLarge">{x.dayNum}</Text>
-            </Pressable>
-          ))}
-        </View>
-        <View
-          key="2"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "stretch",
-            justifyContent: "space-around",
-            padding: 10,
-          }}
-        >
-          {[
-            { day: "SUN", dayNum: 8 },
-            { day: "MON", dayNum: 9 },
-            { day: "TUE", dayNum: 10 },
-            { day: "WED", dayNum: 11 },
-            { day: "THU", dayNum: 12 },
-            { day: "FRI", dayNum: 13 },
-            { day: "SAT", dayNum: 14 },
-          ].map((x, i) => (
-            <Pressable
-              android_ripple={{ color: "#8ac5ef" }}
-              unstable_pressDelay={200}
-              key={i}
-              style={{
-                display: "flex",
-                borderRadius: 5,
-                width: 50,
-                alignItems: "center",
-                justifyContent: "center",
-                borderWidth: 0.4,
-                backgroundColor: theme === "light" ? Colors.dark.tint : "black",
-              }}
-            >
-              <Text>{x.day}</Text>
-              <Text variant="bodyLarge">{x.dayNum}</Text>
-            </Pressable>
+            {
+              id: "1",
+              dayOfTheWeek: "SUN",
+              dateOfTheMonth: new Date().getDate(),
+            },
+            {
+              id: "2",
+              dayOfTheWeek: "MON",
+              dateOfTheMonth: new Date().getDate() + 1,
+            },
+            {
+              id: "3",
+              dayOfTheWeek: "TUE",
+              dateOfTheMonth: new Date().getDate() + 2,
+            },
+            {
+              id: "4",
+              dayOfTheWeek: "WED",
+              dateOfTheMonth: new Date().getDate() + 3,
+            },
+            {
+              id: "5",
+              dayOfTheWeek: "THU",
+              dateOfTheMonth: new Date().getDate() + 4,
+            },
+            {
+              id: "6",
+              dayOfTheWeek: "FRI",
+              dateOfTheMonth: new Date().getDate() + 5,
+            },
+            {
+              id: "7",
+              dayOfTheWeek: "SAT",
+              dateOfTheMonth: new Date().getDate() + 6,
+            },
+          ]?.map((dateData: any, i: number) => (
+            <DatePicker datePickerData={dateData} key={i} />
           ))}
         </View>
       </PagerView>
