@@ -1,21 +1,22 @@
 import Colors from "@/constants/Colors";
-import { eachDayOfInterval, format } from "date-fns";
-import { useState } from "react";
+import { format } from "date-fns";
 import { Pressable, useColorScheme } from "react-native";
 import { Text } from "react-native-paper";
 
-const DatePicker = ({ date }: { date: Date }) => {
+const DatePicker = ({
+  date,
+  selectedDate,
+  setSelectedDateHandler,
+}: {
+  date: Date;
+  selectedDate: Date;
+  setSelectedDateHandler: (date: Date) => void;
+}) => {
   const theme = useColorScheme();
-
-  const todaysDate = eachDayOfInterval({
-    start: Date.now(),
-    end: Date.now(),
-  })[0];
-
-  const [selectedDate, setSelectedDate] = useState(todaysDate);
 
   return (
     <Pressable
+      onPress={() => setSelectedDateHandler(date)}
       android_ripple={{ color: "#8ac5ef" }}
       unstable_pressDelay={200}
       style={{
