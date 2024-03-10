@@ -2,12 +2,12 @@ import * as React from "react";
 import { StyleSheet } from "react-native";
 import { FAB } from "react-native-paper";
 
-const CreateNewOrderButton = () => (
+const CreateNewOrderButton = ({ onPress }: { onPress: () => void }) => (
   <FAB
     icon={"plus"}
     label={"New Order"}
     style={styles.fab}
-    onPress={() => console.log("Pressed")}
+    onPress={() => onPress()}
   />
 );
 

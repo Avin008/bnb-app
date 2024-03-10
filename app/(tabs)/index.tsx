@@ -1,7 +1,9 @@
 import CreateNewOrderButton from "@/components/CreateNewOrderButton";
+import CreateNewOrderModal from "@/components/CreateNewOrderModal";
 import FilterByDate from "@/components/FilterByDate";
 import ListItem from "@/components/ListItem";
-import { useEffect, useState } from "react";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FlatList, View } from "react-native";
 import { List, Text } from "react-native-paper";
 
@@ -14,9 +16,17 @@ const HomeScreen = () => {
       .then((data) => setOrderData(data))
       .catch((err) => console.log(err));
   }, []);
+
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+
   return (
     <View style={{ flex: 1 }}>
-      <CreateNewOrderButton />
+      <CreateNewOrderModal modalProps={{ modalRef: bottomSheetModalRef }} />
+      <CreateNewOrderButton onPress={handlePresentModalPress} />
       <FilterByDate />
       <FlatList
         data={ordersData}
