@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import * as React from "react";
 import { StyleSheet } from "react-native";
 import { FAB } from "react-native-paper";
@@ -7,7 +8,7 @@ const CreateNewOrderButton = ({ onPress }: { onPress: () => void }) => (
     icon={"plus"}
     label={"New Order"}
     style={styles.fab}
-    onPress={() => onPress()}
+    onPress={() => router.push("/(modals)/create-order")}
   />
 );
 
