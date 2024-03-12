@@ -1,12 +1,13 @@
 import Colors from "@/constants/Colors";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity, View, useColorScheme } from "react-native";
-import { Card, Text } from "react-native-paper";
+import { Button, Card, Text } from "react-native-paper";
 
 type ItemCardProps = {
   id: string;
   name: string;
   price: number;
+  priceUnit: string;
   total: number;
   available: number;
 };
@@ -23,19 +24,38 @@ const ItemCard = ({ itemCardData }: { itemCardData: ItemCardProps }) => {
           alignItems: "center",
         }}
       >
-        <View>
-          <Text variant="titleMedium">{itemCardData.name}</Text>
-          <Text variant="labelLarge">${itemCardData.price} per day</Text>
-          <Text variant="labelLarge">
+        <View style={{ display: "flex", gap: 4 }}>
+          <Text
+            variant="bodyMedium"
+            style={{
+              fontWeight: "700",
+            }}
+          >
+            {itemCardData.name}
+          </Text>
+          <Text
+            variant="bodySmall"
+            style={{
+              fontWeight: "700",
+              color: theme === "dark" ? "#cccc" : "#262626",
+            }}
+          >
+            {itemCardData.price.toLocaleString("en-IN", {
+              currency: "INR",
+              style: "currency",
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })}{" "}
+            per {itemCardData.priceUnit}
+          </Text>
+          <Text
+            variant="bodySmall"
+            style={{
+              color: theme === "dark" ? "#cccc" : Colors.light.text,
+            }}
+          >
             Total: {itemCardData.total}, Available: {itemCardData.available}
           </Text>
-        </View>
-        <View>
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={25}
-            color={theme === "dark" ? Colors.dark.text : Colors.light.text}
-          />
         </View>
       </Card.Content>
     </Card>
