@@ -1,20 +1,14 @@
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
 import SelectDateInput from "./SelectDateInput";
-import { Button, TextInput } from "react-native-paper";
+import { Button } from "react-native-paper";
 
 const CreateOrderForm = () => {
   return (
-    <View
-      style={{
-        display: "flex",
-        gap: 10,
-        padding: 15,
-      }}
-    >
+    <View style={{ gap: 10, paddingHorizontal: 20, paddingVertical: 10 }}>
       <SelectDateInput label="From" date={Date.now()} />
       <SelectDateInput label="To" date={Date.now()} />
       <View style={{ paddingVertical: 10 }}>
-        <Button mode="contained">Check Available Items</Button>
+        <Button mode="contained">Search Available Items</Button>
       </View>
     </View>
   );
