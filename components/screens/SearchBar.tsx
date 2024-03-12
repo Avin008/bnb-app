@@ -1,16 +1,19 @@
 import * as React from "react";
+import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
 
 const SearchBar = ({ label }: { label: string }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   return (
-    <Searchbar
-      mode="view"
-      placeholder={label}
-      onChangeText={setSearchQuery}
-      value={searchQuery}
-    />
+    <View style={{ margin: 10 }}>
+      <Searchbar
+        mode="bar"
+        placeholder={label}
+        onChangeText={setSearchQuery}
+        value={searchQuery}
+      />
+    </View>
   );
 };
 
