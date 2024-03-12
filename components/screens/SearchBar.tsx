@@ -6,7 +6,7 @@ const SearchBar = ({ label }: { label: string }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   return (
-    <View style={{ margin: 10 }}>
+    <View style={{ margin: 10, marginVertical: 20 }}>
       <Searchbar
         mode="bar"
         placeholder={label}
